@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class MainController extends Controller
 {
+
     function index(): View
     {
-        $title = 'Main page';
-        $subtitle = '<em>Subtitle</em>';
-        $users = [];
 
-        return view('index', compact('title', 'subtitle', 'users'));
+        // $category = new Category();
+        // $category->name = 'Category 4';  $category->name = $request->name;
+        // $category->description = 'description Category 3';
+        // $category->save();
+        // dd($category->id);
+
+        $categories = Category::all();
+       // dd($categories);
+
+
+        $title = 'Main page';
+        
+        return view('index', compact('title', 'categories'));
     }
+
+
 
     function contacts(): View
     {
