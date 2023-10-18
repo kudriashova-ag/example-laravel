@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->boolean('active')->default(true);
+            $table->integer('rate')->default(5);
+            $table->timestamp('published_at')->useCurrent();
             $table->timestamps();
         });
     }

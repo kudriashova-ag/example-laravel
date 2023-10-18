@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -11,6 +12,10 @@ class MainController extends Controller
 
     function index(): View
     {
+        /** @var Article $article  */
+       /*  $article = Article::first();
+        dd($article->getAttribute('active'));
+        dd($article->active);  // __get   __set */
 
         // $category = new Category();
         // $category->name = 'Category 4';  $category->name = $request->name;
@@ -36,6 +41,7 @@ class MainController extends Controller
 
     function sendEmail(Request $request)
     {
+        
         $request->validate([
             'name' => 'required|min:2|max:15',
             'email' => 'required|email',

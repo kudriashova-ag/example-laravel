@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'active'=>'boolean',
+        'published_at'=> 'datetime:Y-m-d'
+    ];
 }

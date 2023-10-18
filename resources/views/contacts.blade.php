@@ -34,7 +34,7 @@
 
     <div>
       <label for="email">Email: </label>
-      <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}">
+      <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}">
       @error('email')
         <div class="invalid-feedback">{{$message}}</div>
       @enderror
