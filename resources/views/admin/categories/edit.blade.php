@@ -1,6 +1,6 @@
 @extends('admin.templates.index')
 
-@section('title-page', 'Create Category')
+@section('title-page', 'Edit Category')
 
 @section('content')
 
@@ -14,11 +14,11 @@
     </div>
   @endif
 
-    {!! Form::open(['route'=>'categories.store']) !!}
+    {!! Form::model($category, ['route'=>['categories.update', $category->id], 'method'=>'put']) !!}
 
         @include('admin.categories._form')
-       
-        {!! Form::submit('Add Category', ['class'=>'btn btn-primary mt-3']) !!}
+
+        {!! Form::submit('Save Category', ['class'=>'btn btn-primary mt-3']) !!}
 
     {!! Form::close() !!}
 @endsection
