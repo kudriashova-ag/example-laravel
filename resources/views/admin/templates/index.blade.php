@@ -279,7 +279,7 @@
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
+{{-- <script src="plugins/sparklines/sparkline.js"></script> --}}
 <!-- JQVMap -->
 <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -299,6 +299,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
 <script src="dist/js/pages/dashboard.js"></script>
 </body>
 </html>
