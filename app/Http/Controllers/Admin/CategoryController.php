@@ -42,6 +42,7 @@ class CategoryController extends Controller
         // $category = new Category();
         // $category->name = $request->name;
         // $category->description = $request->description;
+        // image
         // $category->save();
         Category::create($request->all());
         return to_route('categories.index');
