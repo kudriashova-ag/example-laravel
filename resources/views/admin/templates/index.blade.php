@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Dashboard</title>
 
-  <base href="http://example-laravel" />
+  <base href="http://127.0.0.1:8000" />
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -212,6 +212,7 @@
           
           <li class="nav-item">
             <a href="{{route('categories.index')}}" class="nav-link">Categories</a>
+            <a href="{{route('products.index')}}" class="nav-link">Products</a>
           </li>
 
         </ul>
