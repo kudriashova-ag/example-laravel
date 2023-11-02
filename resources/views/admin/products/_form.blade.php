@@ -23,3 +23,7 @@
     {!! Form::file('image', ['class'=>'form-control']) !!}
 </div>
 
+<div class="form-group mt-3">
+    {!! Form::label('recommended', 'Recommended Product: ') !!}
+    {!! Form::select('recommended[]', $recommendedProducts, null, ['class'=>'form-control', 'multiple'=>true]) !!}
+</div>

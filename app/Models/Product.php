@@ -13,6 +13,9 @@ class Product extends Model
 
     protected $fillable = ['name', 'price', 'amount', 'category_id'];
 
+    protected $with = ['category', 'recommended'];
+
+
     function category() : BelongsTo {
         return $this->belongsTo(Category::class);
     }
@@ -24,5 +27,10 @@ class Product extends Model
                 'source' => 'name'
             ]
         ];
+    }
+
+
+    function recommended() {
+        return $this->belongsToMany(Product::class, 'recommended_products', 'product_id', 'recommended_id');
     }
 }
