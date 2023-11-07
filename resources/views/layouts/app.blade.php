@@ -38,7 +38,9 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Catalog</a>
                             <ul class="dropdown-menu">
                                 @foreach ($shareCategories as $category)
-                                    <li><a class="dropdown-item" href="{{route('category', ['category'=>$category->slug])}}">{{$category->name}}</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('category', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </li>
@@ -46,6 +48,12 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#cart">
+                                Cart
+                            </button>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -88,6 +96,27 @@
             @yield('content')
         </main>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="cart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Your Cart</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        @include('shop._cart')
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </body>
 
 </html>

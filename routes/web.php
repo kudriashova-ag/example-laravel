@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ShopController;
 use App\Models\Category;
@@ -27,7 +28,7 @@ Route::get('/category/{category:slug}', [ShopController::class, 'category'])->na
 
 Route::get('/product/{product:slug}', [ShopController::class, 'product'])->name('product');
 
-
+Route::post('cart/store', [CartController::class, 'store']);
 
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
