@@ -6,12 +6,39 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use LiqPay;
 
 class MainController extends Controller
 {
 
     function index(): View
     {
+
+        $liqpay = new LiqPay(env('LIQPAY_PUBLIC'), env('LIQPAY_PRIVATE'));
+        $order_ligpay_id = time();
+        $html = $liqpay->cnb_form(array(
+            'action'         => 'pay',
+            'amount'         => '1',
+            'currency'       => 'UAH',
+            'description'    => 'description text',
+            'order_id'       => $order_ligpay_id,
+            'version'        => '3',
+            'result_url'     => 'http://example-laravel/pay?order_ligpay_id='. $order_ligpay_id
+        ));
+
+
+    
+
+
+
+        // $ch = curl_init('https://jsonplaceholder.typicode.com/todos/1');
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // $result = curl_exec($ch);
+        // curl_close($ch);
+
+        // dd(json_decode($result));
+
+
         /** @var Article $article  */
        /*  $article = Article::first();
         dd($article->getAttribute('active'));
@@ -29,7 +56,39 @@ class MainController extends Controller
 
         $title = 'Main page';
         
-        return view('index', compact('title', 'categories'));
+        return view('index', compact('title', 'categories', 'html'));
+    }
+
+
+    function pay(Request $request){
+        $private_key = env('LIQPAY_PRIVATE');
+
+        $sign = base64_encode(sha1(
+            $private_key .
+            $request->data .
+            $private_key,
+            1
+        ));
+
+        if($sign === $request->signature){
+            $liqpay = new LiqPay(env('LIQPAY_PUBLIC'), env('LIQPAY_PRIVATE'));
+            $res = $liqpay->api("request", array(
+                'action'        => 'status',
+                'version'       => '3',
+                'order_id'      => $request->order_ligpay_id
+            ));
+
+            if($res->status === 'success'){
+                // save
+                // redirect
+            }
+        }
+        else{
+            return 'Error';
+        }
+
+
+       
     }
 
 

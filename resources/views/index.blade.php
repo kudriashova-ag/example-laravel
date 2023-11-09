@@ -2,6 +2,8 @@
 
 @section('content')   
     <h1>{{$title}}</h1>
+
+    {!!$html!!}
     
     @foreach ($categories as $category)
         <p>{{$category->name}}, {{$category->description}}</p>

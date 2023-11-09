@@ -30,6 +30,9 @@ Route::get('/product/{product:slug}', [ShopController::class, 'product'])->name(
 
 Route::post('cart/store', [CartController::class, 'store']);
 
+Route::post('pay', [MainController::class, 'pay']);
+
+
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
